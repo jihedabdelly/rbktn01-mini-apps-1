@@ -27,29 +27,49 @@ imgO.style.height = "100px"
 
 const boxes = document.querySelectorAll("#container div");
 var arr = [];
+var arrx = [];
+var arro = [];
+
 var count = 1;
 //document.getElementById("container").addEventListener("click", function() {
   for(box of boxes) {
     box.addEventListener("click",function() {
 
-      imgO = imgO;
-      imgX = imgX;
-
       function oneByone(imgX,imgO) {
         count++
         if(count % 2 === 0) {
+
           return imgX
         } else { return imgO}
       }
 
       if(!arr.includes(this.id)) {
         arr.push(this.id)
-        document.getElementById(this.id).appendChild(oneByone(imgX,imgO))
+        // oneByone(imgX,imgO)
+        // if(oneByone(imgX,imgO) === imgX) {
+        //   arrx.push(this.id)
+        // } else if(oneByone(imgX,imgO) === imgO) {
+        //   arro.push(this.id)
+        // }
+        document.getElementById(this.id).append(oneByone(imgX,imgO))
+
+      }
+
+      if(oneByone(imgX,imgO) === imgX && !arrx.includes(this.id)) {
+        arrx.push(this.id)
+        count--
+      } else if(oneByone(imgX,imgO) === imgO && !arro.includes(this.id)) {
+        arro.push(this.id)
+        count--
       }
 
       console.log(arr)
+      console.log("Player X",arrx)
+      console.log("Player O",arro)
 
     })
+
+    var stop = []
   }
 //})
 
